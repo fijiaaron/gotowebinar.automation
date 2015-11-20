@@ -1,0 +1,19 @@
+{
+  "name": "gotowebinar-tests",
+  "version": "1.0.0",
+  "description": "Automated tests to schedule a webinar in GoToWebinar",
+  "main": "test.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fijiaaron/citrix-gotomeeting-tests.git"
+  },
+  "author": "Aaron Evans",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/fijiaaron/citrix-gotomeeting-tests/issues"
+  },
+  "homepage": "https://github.com/fijiaaron/citrix-gotomeeting-tests#readme"
+}

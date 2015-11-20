@@ -1,0 +1,29 @@
+1.  Open My Webinars page 
+	(https://global.gotowebinar.com/webinars.tmpl)
+
+2.  Schedule a new Webinar
+	- with a unique title
+	- starting 3 days from now
+
+3.  Check that the webinar appears in the upcoming webinars list
+	(https://global.gotowebinar.com/webinars.tmpl)
+	- and is scheduled for the right date & time
+
+
+- apply OOP principles
+- separate test logic and interaction with page elements (using page objects)
+- code should be reusable
+- project dependencies should be managed by a dependency management tool
+- use chrome or a headless browser
+- do not store provided user email or password in your code
+- project should contain a REAME file with instructions how to run tests from the command line
+- publish to Github 
+- paste the link in the answer field below
+- when you submit, we will review on github
+
+Define other test cases to be automated for Schedule Webinar page
+(https://global.gotowebinar.com/schedule.tmpl)
+
+
+
+ç

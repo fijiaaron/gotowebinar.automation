@@ -2,13 +2,14 @@ package citrix.gotowebinar.automation.pages;
 
 import citrix.gotowebinar.automation.AutomationException;
 import citrix.gotowebinar.automation.WebDriverTestCase;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
 public class MyWebinarsPage_Test extends WebDriverTestCase {
 
-    @Test
+    @Test @Ignore
     public void should_challenge_with_login() throws AutomationException {
         MyWebinarsPage myWebinarsPage = new MyWebinarsPage(driver);
         LoginPage loginPage = new LoginPage(driver);
@@ -17,7 +18,7 @@ public class MyWebinarsPage_Test extends WebDriverTestCase {
         assertTrue(loginPage.isCurrentPage());
     }
 
-    @Test
+    @Test @Ignore
     public void should_redirect_back_to_my_webinars_after_login() throws AutomationException {
         MyWebinarsPage myWebinarsPage = new MyWebinarsPage(driver);
         LoginPage loginPage = new LoginPage(driver);

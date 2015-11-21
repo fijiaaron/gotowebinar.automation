@@ -2,4 +2,4 @@ To run these tests from the command line, clone the git repository and from with
 
 mvn clean package failsafe:integration-test
 
-
+To configure WebDriver path and GoToWebinar logins copy test.properties.example and edit

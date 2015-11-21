@@ -58,7 +58,6 @@ public class ScheduleNewWebinar_Test extends WebDriverTestCase {
         gotowebinar.scheduleWebinarPage.enterDescription(webinarDescription);
         //TODO: need to be able to manipulate date-picker
 //        gotowebinar.scheduleWebinarPage.enterDate("how to enter date?");
-
         gotowebinar.scheduleWebinarPage.save();
 
         // manage webinars page

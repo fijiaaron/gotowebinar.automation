@@ -1,4 +1,4 @@
-To run these tests from the command line, clone the git repository and from within the automation directory run:
+To run these tests from the command line, clone the git repository and from within the project root directory run:
 
 mvn clean package failsafe:integration-test
 

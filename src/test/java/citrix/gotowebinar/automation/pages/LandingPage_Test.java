@@ -9,7 +9,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class LandingPage_Tests extends WebDriverTestCase {
+public class LandingPage_Test extends WebDriverTestCase {
 
     @Test
     public void should_navigate_to_landing_page() throws AutomationException {

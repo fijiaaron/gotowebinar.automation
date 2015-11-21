@@ -40,24 +40,24 @@ public class ScheduleNewWebinar_Test extends WebDriverTestCase {
         gotowebinar.landingPage.signIn();
         assertTrue(gotowebinar.loginPage.isCurrentPage());
 
-        // login
+        // login page
         log.info("going to login page");
         gotowebinar.loginPage.navigateTo();
         gotowebinar.loginPage.login(gotowebinar_user_email, gotowebinar_user_password);
 
-//        // schedule webinar
+        // schedule webinar
         log.info("going to my webinars page");
-//        gotowebinar.myWebinarsPage.navigateTo();
+//      gotowebinar.myWebinarsPage.navigateTo();
         assertTrue(gotowebinar.myWebinarsPage.isCurrentPage());
         gotowebinar.myWebinarsPage.scheduleNewWebinar();
-//
-//        // enter webinar info
+
+        // enter webinar info
         log.info("going to schedule webinar page");
         assertTrue(gotowebinar.scheduleWebinarPage.isCurrentPage());
-//        gotowebinar.scheduleWebinarPage.navigateTo();
+//      gotowebinar.scheduleWebinarPage.navigateTo();
         gotowebinar.scheduleWebinarPage.enterTitle(webinarTitle);
         gotowebinar.scheduleWebinarPage.enterDescription(webinarDescription);
-//        gotowebinar.scheduleWebinarPage.enterDate("how to enter date?");
+//      gotowebinar.scheduleWebinarPage.enterDate("how to enter date?");
         //TODO: need to be able to manipulate date-picker
         gotowebinar.scheduleWebinarPage.save();
 
@@ -65,12 +65,8 @@ public class ScheduleNewWebinar_Test extends WebDriverTestCase {
         log.info("goto to manage webinars page to verify");
         assertTrue(gotowebinar.manageWebinarPage.isCurrentPage());
         assertThat(gotowebinar.manageWebinarPage.getTitle(), is(webinarTitle));
-
-        assertThat(gotowebinar.manageWebinarPage.getTitle(), is(webinarTitle));
         assertThat(gotowebinar.manageWebinarPage.getDescription(), is(webinarDescription));
-
         //TODO: date should be same as entered
-
     }
 
     private String generateTimestamp() {
@@ -78,4 +74,3 @@ public class ScheduleNewWebinar_Test extends WebDriverTestCase {
         return dateFormat.format(new Date());
     }
 }
-

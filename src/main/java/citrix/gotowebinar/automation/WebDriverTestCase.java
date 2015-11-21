@@ -15,7 +15,7 @@ public class WebDriverTestCase {
     @Rule
     public TestName testName = new TestName();
 
-    protected static Logger log;
+    protected static Logger log = Logger.getLogger(getTestClassName());
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected static Properties properties;
@@ -24,9 +24,7 @@ public class WebDriverTestCase {
     @BeforeClass
     public static void initialize() {
         log = Logger.getLogger(getTestClassName());
-
-        log.info("initialize...");
-        System.out.println("initialize...");
+        log.info("initializing...");
 
         properties = PropertyLoader.LoadProperties("test.properties");
     }

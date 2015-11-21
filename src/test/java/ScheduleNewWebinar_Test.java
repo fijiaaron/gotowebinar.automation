@@ -1,11 +1,9 @@
 import citrix.gotowebinar.automation.AutomationException;
+import citrix.gotowebinar.automation.DateUtil;
 import citrix.gotowebinar.automation.GoToWebinarDriver;
 import citrix.gotowebinar.automation.WebDriverTestCase;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -31,8 +29,9 @@ public class ScheduleNewWebinar_Test extends WebDriverTestCase {
 
     @Test
     public void should_create_new_webinar() throws AutomationException {
-        String webinarTitle = "This is a unique webinar title " + generateTimestamp();
-        String webinarDescription = "This is a unique webinar description " + generateTimestamp();
+        String timestamp = DateUtil.generateTimestamp();
+        String webinarTitle = "This is a unique webinar title " + timestamp;
+        String webinarDescription = "This is a unique webinar description " + timestamp;
 
         // landing page
         log.info("going to landing page");
@@ -41,36 +40,32 @@ public class ScheduleNewWebinar_Test extends WebDriverTestCase {
         assertTrue(gotowebinar.loginPage.isCurrentPage());
 
         // login page
-        log.info("going to login page");
+        log.info("going to login page to login");
         gotowebinar.loginPage.navigateTo();
         gotowebinar.loginPage.login(gotowebinar_user_email, gotowebinar_user_password);
 
-        // schedule webinar
-        log.info("going to my webinars page");
-//      gotowebinar.myWebinarsPage.navigateTo();
+        // my webinars page
+        log.info("on my webinars page to schedule a new webinar");
+//        gotowebinar.myWebinarsPage.navigateTo();
         assertTrue(gotowebinar.myWebinarsPage.isCurrentPage());
         gotowebinar.myWebinarsPage.scheduleNewWebinar();
 
-        // enter webinar info
-        log.info("going to schedule webinar page");
+        // schedule webinar page
+        log.info("on schedule webinar page to enter details");
+//        gotowebinar.scheduleWebinarPage.navigateTo();
         assertTrue(gotowebinar.scheduleWebinarPage.isCurrentPage());
-//      gotowebinar.scheduleWebinarPage.navigateTo();
         gotowebinar.scheduleWebinarPage.enterTitle(webinarTitle);
         gotowebinar.scheduleWebinarPage.enterDescription(webinarDescription);
-//      gotowebinar.scheduleWebinarPage.enterDate("how to enter date?");
         //TODO: need to be able to manipulate date-picker
+//        gotowebinar.scheduleWebinarPage.enterDate("how to enter date?");
+
         gotowebinar.scheduleWebinarPage.save();
 
-//        // verify webinar was scheduled
-        log.info("goto to manage webinars page to verify");
+        // manage webinars page
+        log.info("on manage webinars page to verify");
         assertTrue(gotowebinar.manageWebinarPage.isCurrentPage());
         assertThat(gotowebinar.manageWebinarPage.getTitle(), is(webinarTitle));
         assertThat(gotowebinar.manageWebinarPage.getDescription(), is(webinarDescription));
         //TODO: date should be same as entered
-    }
-
-    private String generateTimestamp() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-        return dateFormat.format(new Date());
     }
 }

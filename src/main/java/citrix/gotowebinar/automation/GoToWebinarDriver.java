@@ -39,5 +39,4 @@ public class GoToWebinarDriver {
     public Boolean isCurrentPage(WebDriverPage<? extends WebDriverPage> page) throws AutomationException {
         return page.isCurrentPage();
     }
-
 }

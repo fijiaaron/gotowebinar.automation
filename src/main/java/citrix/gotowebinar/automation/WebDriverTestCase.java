@@ -47,7 +47,6 @@ public class WebDriverTestCase {
         String testClassName = trace[1].getClassName();
         return testClassName;
     }
-
 }
 
 

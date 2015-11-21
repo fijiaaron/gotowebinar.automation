@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class MyWebinarsPage_Tests extends WebDriverTestCase {
+public class MyWebinarsPage_Test extends WebDriverTestCase {
 
     @Test
     public void should_challenge_with_login() throws AutomationException {

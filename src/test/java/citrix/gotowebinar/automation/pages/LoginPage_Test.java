@@ -8,7 +8,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class LoginPage_Tests extends WebDriverTestCase {
+public class LoginPage_Test extends WebDriverTestCase {
 
     @Test
     public void should_load_login_page() throws AutomationException {

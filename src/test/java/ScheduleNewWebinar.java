@@ -1,53 +1,63 @@
+import citrix.gotowebinar.automation.AutomationException;
+import citrix.gotowebinar.automation.GoToWebinarDriver;
 import citrix.gotowebinar.automation.WebDriverTestCase;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ScheduleNewWebinar extends WebDriverTestCase {
 
     String gotowebinar_user_email;
     String gotowebinar_user_password;
 
+    GoToWebinarDriver gotowebinar;
+
     @Before
     public void getTestData() {
-        gotowebinar_user_email = System.getProperty("gotowebinar.user.email");
-        gotowebinar_user_password = System.getProperty("gotowebinar.user.password");
+        gotowebinar_user_email = properties.getProperty("gotowebinar.user.email");
+        gotowebinar_user_password = properties.getProperty("gotowebinar.user.password");
 
         log.info("gotowebinar_user_email: " + gotowebinar_user_email);
         log.info("gotowebinar_user_password: " + gotowebinar_user_password);
+
+        gotowebinar = new GoToWebinarDriver(driver);
     }
 
     @Test
-    public void should_create_new_webinar_with_title_and_description() {
-        // Landing Page
-        driver.get("http://www.gotomeeting.com/webinar/customer");
-        driver.findElement(By.linkText("Sign In")).click();
+    public void should_create_new_webinar_with_title_and_description() throws AutomationException {
+        String webinarTitle = "This is a unique webinar title " + generateTimestamp();
+        String webinarDescription = "This is a unique webinar description " + generateTimestamp();
 
-        // Login Page
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("emailAddress")));
-        assertThat(driver.getTitle(), is("Citrix Secure Sign In"));
-        driver.findElement(By.id("emailAddress")).sendKeys(gotowebinar_user_email);
-        driver.findElement(By.id("password")).sendKeys(gotowebinar_user_password);
-        driver.findElement(By.id("submit")).click();
+        // landing page
+        log.info("going to landing page");
+        gotowebinar.landingPage.navigateTo();
+        gotowebinar.landingPage.signIn();
 
-        // My Webinars Page
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("scheduleWebinar")));
-        assertThat(driver.getTitle(), is("My Webinars"));
-        assertThat(driver.getCurrentUrl(), is("https://global.gotowebinar.com/webinars.tmpl"));
-        driver.findElement(By.id("scheduleWebinar")).click();
+        // login
+        log.info("going to login page");
+        gotowebinar.loginPage.navigateTo();
+        gotowebinar.loginPage.login(gotowebinar_user_email, gotowebinar_user_password);
 
-        // Schedule a Webinar Page
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("name")));
-        assertThat(driver.getTitle(), is("Schedule a webinar"));
-        assertThat(driver.getCurrentUrl(), is("https://global.gotowebinar.com/schedule.tmpl"));
-        driver.findElement(By.id("name")).sendKeys("test webinar");
-        driver.findElement(By.id("description")).sendKeys("this is a test webinar") ;
-        driver.findElement(By.id("schedule.submit.button")).click();
+        // schedule webinar
+        log.info("going to my webinars page");
+        gotowebinar.myWebinarsPage.navigateTo();
+        gotowebinar.myWebinarsPage.scheduleNewWebinar();
 
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("where???"), "This webinar was scheduled. Please finish setting up this webinar."));
+        // enter webinar info
+        log.info("going to schedule webinar page");
+        gotowebinar.scheduleWebinarPage.navigateTo();
+        gotowebinar.scheduleWebinarPage.enterTitle(webinarTitle);
+        gotowebinar.scheduleWebinarPage.enterDescription(webinarDescription);
+
+        // verify webinar was scheduled
+        log.info("goto to my webinars page to verify");
+    }
+
+    private String generateTimestamp() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+        return dateFormat.format(new Date());
     }
 }
+

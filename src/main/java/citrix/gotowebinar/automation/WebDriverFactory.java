@@ -11,6 +11,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class WebDriverFactory {
     public Browser browser = Browser.FIREFOX;
@@ -27,6 +28,8 @@ public class WebDriverFactory {
 
     public static long TIMEOUT = 30000;
 
+    protected static Logger log = Logger.getLogger(WebDriverFactory.class.getSimpleName());
+
     public WebDriverFactory() {
         configureFromEnvironmentVariables();
     }
@@ -41,28 +44,26 @@ public class WebDriverFactory {
     }
 
     public void configureFromProperties(Properties properties) {
-        for (Object propertyName : properties.keySet()) {
-//            if (propertyName.toString().startsWith("webdriver"))
-                System.out.println("property: " + propertyName + "=" + properties.get(propertyName));
-        }
-
         if (properties.containsKey("webdriver.chrome.driver")) {
             chromeDriverPath = properties.getProperty("webdriver.chrome.driver");
-            System.out.println("chromeDriverPath:" + chromeDriverPath);
+            log.info("chromeDriverPath:" + chromeDriverPath);
         }
         if (properties.containsKey("webdriver.ie.driver")) {
             ieDriverPath = properties.getProperty("webdriver.ie.driver");
+            log.info("ieDriverPath:" + ieDriverPath);
         }
         if (properties.containsKey("webdriver.remote.url")) {
             remoteWebDriverUrl = properties.getProperty("webdriver.remote.url");
+            log.info("remoteWebDriverUrl:" + remoteWebDriverUrl);
         }
         if (properties.containsKey("saucelabs.user.name")) {
             sauceUserName = properties.getProperty("saucelabs.user.name");
+            log.info("sauceUserName: " + sauceUserName);
         }
         if (properties.containsKey("saucelabs.access.key")) {
             sauceAccessKey = properties.getProperty("saucelabs.access.key");
+            log.info("sauceAccessKey: " + sauceAccessKey);
         }
-
     }
 
     public WebDriver getInstance() throws AutomationException {
@@ -78,10 +79,11 @@ public class WebDriverFactory {
             case FIREFOX:
                 return new FirefoxDriver();
             case CHROME:
-                System.out.println("chromeDriverPath:" + chromeDriverPath);
+                log.info("setting system property webdriver.chrome.driver: " + chromeDriverPath);
                 System.setProperty("webdriver.chrome.driver", chromeDriverPath);
                 return new ChromeDriver();
             case IE:
+                log.info("setting system property webdriver.ie.driver: " + ieDriverPath);
                 System.setProperty("webdriver.ie.driver", ieDriverPath);
                 return new InternetExplorerDriver();
             default:

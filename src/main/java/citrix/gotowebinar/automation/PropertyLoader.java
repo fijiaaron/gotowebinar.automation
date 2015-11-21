@@ -8,14 +8,20 @@ public class PropertyLoader {
 
     protected static Logger log = Logger.getLogger(PropertyLoader.class.getSimpleName());
 
-    public Properties loadProperties(String filename) {
+    public static Properties LoadProperties(String propertiesFile) {
         Properties properties = new Properties();
+
         try {
-            //This depends on a filename being in the class path
-            properties.load(getClass().getResourceAsStream(filename));
+            properties.load(PropertyLoader.class.getResourceAsStream(propertiesFile));
         } catch (IOException e) {
-            log.warning("can't load properties file: " + filename);
+            log.warning("unable to load properties file: " + propertiesFile);
             e.printStackTrace();
+        }
+
+        log.info("getting test properties");
+
+        for (Object propertyName : properties.keySet()) {
+            log.info("property: " + propertyName + "=" + properties.get(propertyName));
         }
 
         return properties;

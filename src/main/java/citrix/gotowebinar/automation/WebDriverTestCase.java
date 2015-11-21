@@ -19,23 +19,20 @@ public class WebDriverTestCase {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected static Properties properties;
-
+    protected static String propertiesFile = "/test.properties";
 
     @BeforeClass
     public static void initialize() {
         log = Logger.getLogger(getTestClassName());
-        log.info("initializing...");
-
-        String propertiesFile = "/test.properties";
-        properties = new PropertyLoader().loadProperties(propertiesFile);
+        log.info("initializing tests...");
+        properties = PropertyLoader.LoadProperties(propertiesFile);
     }
 
     @Before
     public void setup() throws AutomationException {
         log = Logger.getLogger(this.getClass().getSimpleName());
-        log.info("setup");
-        System.out.println("setup");
-        driver = new WebDriverFactory().local().browser(Browser.CHROME).getInstance();
+        log.info("setting up test case...");
+        driver = new WebDriverFactory(properties).local().browser(Browser.CHROME).getInstance();
         wait = new WebDriverWait(driver, WebDriverFactory.TIMEOUT);
     }
 
@@ -46,8 +43,6 @@ public class WebDriverTestCase {
             driver.quit();
         }
     }
-
-
 
     protected static String getTestClassName() {
         StackTraceElement[] trace = new Throwable().getStackTrace();

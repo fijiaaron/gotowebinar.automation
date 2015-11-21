@@ -26,14 +26,14 @@ public class ScheduleNewWebinar extends WebDriverTestCase {
     }
 
     @Test
-    public void should_create_new_webinar_with_title_and_description() throws AutomationException {
+    public void should_create_new_webinar() throws AutomationException {
         String webinarTitle = "This is a unique webinar title " + generateTimestamp();
         String webinarDescription = "This is a unique webinar description " + generateTimestamp();
 
         // landing page
-        log.info("going to landing page");
-        gotowebinar.landingPage.navigateTo();
-        gotowebinar.landingPage.signIn();
+//        log.info("going to landing page");
+//        gotowebinar.landingPage.navigateTo();
+//        gotowebinar.landingPage.signIn();
 
         // login
         log.info("going to login page");

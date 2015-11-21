@@ -6,7 +6,6 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -17,7 +16,7 @@ public class WebDriverTestCase {
 
     protected static Logger log = Logger.getLogger(getTestClassName());
     protected WebDriver driver;
-    protected WebDriverWait wait;
+
     protected static Properties properties;
     protected static String propertiesFile = "/test.properties";
 
@@ -33,7 +32,6 @@ public class WebDriverTestCase {
         log = Logger.getLogger(this.getClass().getSimpleName());
         log.info("setting up test case...");
         driver = new WebDriverFactory(properties).local().browser(Browser.CHROME).getInstance();
-        wait = new WebDriverWait(driver, WebDriverFactory.TIMEOUT);
     }
 
     @After

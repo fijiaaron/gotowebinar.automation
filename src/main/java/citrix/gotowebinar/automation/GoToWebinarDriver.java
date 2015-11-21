@@ -3,15 +3,16 @@ package citrix.gotowebinar.automation;
 import citrix.gotowebinar.automation.pages.*;
 import org.openqa.selenium.WebDriver;
 
-import java.util.HashMap;
+import java.util.logging.Logger;
 
 public class GoToWebinarDriver {
 
     WebDriver driver;
 
-    public HashMap<String, ? extends WebDriverPage> pages = new HashMap<>();
+    protected Logger log = Logger.getLogger("GoToWebinarDriver");
 
     public GoToWebinarDriver(WebDriver driver) {
+        this.driver = driver;
         initialize(this.driver);
     }
 
@@ -22,9 +23,7 @@ public class GoToWebinarDriver {
     public ScheduleWebinarPage scheduleWebinarPage;
 
     public void initialize(WebDriver driver) {
-        this.driver = driver;
-
-        landingPage = new LandingPage(driver);
+        landingPage = new LandingPage(this.driver);
         loginPage = new LoginPage(driver);
         myWebinarsPage = new MyWebinarsPage(driver);
         scheduleWebinarPage = new ScheduleWebinarPage(driver);

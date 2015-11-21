@@ -1,6 +1,7 @@
 package citrix.gotowebinar.automation.pages;
 
 import citrix.gotowebinar.automation.AutomationException;
+import citrix.gotowebinar.automation.GoToWebinarDriver;
 import citrix.gotowebinar.automation.WebDriverTestCase;
 import org.junit.Test;
 
@@ -25,5 +26,12 @@ public class LandingPage_Tests extends WebDriverTestCase {
 
         LoginPage loginPage = new LoginPage(driver);
         assertTrue(loginPage.isCurrentPage());
+    }
+
+    @Test
+    public void using_site() throws AutomationException {
+        GoToWebinarDriver gotowebinar = new GoToWebinarDriver(driver);
+        gotowebinar.landingPage.navigateTo();
+        gotowebinar.landingPage.signIn();
     }
 }

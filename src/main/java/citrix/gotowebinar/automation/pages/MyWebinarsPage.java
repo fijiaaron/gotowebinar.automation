@@ -20,11 +20,6 @@ public class MyWebinarsPage extends WebDriverPage {
         scheduleWebinar = By.id("scheduleWebinar");
     }
 
-    @Override
-    public Boolean isCurrentPage() {
-        return null;
-    }
-
     public void scheduleNewWebinar() {
         driver.findElement(scheduleWebinar).click();
     }

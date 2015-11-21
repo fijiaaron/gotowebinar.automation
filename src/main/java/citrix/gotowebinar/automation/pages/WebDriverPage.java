@@ -14,13 +14,13 @@ public abstract class WebDriverPage<T>{
     protected WebDriverWait wait;
     public String url;
     public String title;
-    public long timeout = 60000;
+    public long timeout = 60;
     protected Logger log;
 
     public WebDriverPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, timeout);
         initializeLogger();
+        this.driver = driver;
+        wait = new WebDriverWait(this.driver, timeout);
         initializeElements();
     }
 

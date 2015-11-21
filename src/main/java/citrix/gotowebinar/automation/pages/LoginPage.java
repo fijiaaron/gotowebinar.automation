@@ -17,6 +17,8 @@ public class LoginPage extends WebDriverPage {
     @Override
     public void initializeElements() {
         url = "https://login.citrixonline.com/login";
+        url += "?service=https%3A%2F%2Fglobal.gotowebinar.com%2Fj_spring_cas_security_check";
+
         title = "Citrix Secure Sign In";
 
         emailAddressField = By.id("emailAddress");
@@ -26,6 +28,7 @@ public class LoginPage extends WebDriverPage {
 
     public void login(String email, String password) throws AutomationException {
         if (! isCurrentPage()) {
+            log.info("going to login page");
             navigateTo();
         }
 

@@ -15,3 +15,6 @@
 log/
 target/
 
+# test.properties contains sensitive information (like usernames and passwords) and should not be checked in to version control
+test.properties
+

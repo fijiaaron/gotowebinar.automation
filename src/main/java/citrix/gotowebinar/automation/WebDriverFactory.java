@@ -41,8 +41,14 @@ public class WebDriverFactory {
     }
 
     public void configureFromProperties(Properties properties) {
+        for (Object propertyName : properties.keySet()) {
+//            if (propertyName.toString().startsWith("webdriver"))
+                System.out.println("property: " + propertyName + "=" + properties.get(propertyName));
+        }
+
         if (properties.containsKey("webdriver.chrome.driver")) {
             chromeDriverPath = properties.getProperty("webdriver.chrome.driver");
+            System.out.println("chromeDriverPath:" + chromeDriverPath);
         }
         if (properties.containsKey("webdriver.ie.driver")) {
             ieDriverPath = properties.getProperty("webdriver.ie.driver");
@@ -72,6 +78,7 @@ public class WebDriverFactory {
             case FIREFOX:
                 return new FirefoxDriver();
             case CHROME:
+                System.out.println("chromeDriverPath:" + chromeDriverPath);
                 System.setProperty("webdriver.chrome.driver", chromeDriverPath);
                 return new ChromeDriver();
             case IE:
@@ -94,7 +101,6 @@ public class WebDriverFactory {
                 break;
             case IE:
                 capabilities = DesiredCapabilities.internetExplorer();
-                System.setProperty("webdriver.ie.driver", ieDriverPath);
                 break;
             default:
                 capabilities = new DesiredCapabilities();

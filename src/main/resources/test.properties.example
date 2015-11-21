@@ -1,0 +1,23 @@
+# test.properties.example
+
+# This file contains configuration information for running tests.
+# To use it, rename to test.properties
+
+# test.properties contains sensitive information (like usernames & passwords) and should not be checked in to version control.
+
+webdriver.chrome.driver=/path/to/chromedriver
+webdriver.ie.driver=/path/to/IEDriverServer.exe
+# chromedriver can be downloaded at http://chromedriver.storage.googleapis.com/index.html
+# iedriver can be downloaded at http://selenium-release.storage.googleapis.com/index.html
+# you only need to have a driver installed if you wish to run tests with it
+# firefoxdriver does not need downloaded but you do need to have firefox installed and in the path
+
+saucelabs.user.name=SAUCE_USER_NAME
+saucelabs.access.key=SAUCE_ACCESS_KEY
+# you can register for sauce labs at https://saucelabs.com/
+# but you do not need to use sauce labs to run tests.
+
+gotowebinar.user.email=GOTOWEBINAR_USER_EMAIL
+gotowebinar.user.password=GOTOWEBINAR_USER_PASSWORD
+# you can register for gotowebinar at http://www.gotomeeting.com/webinar/customer
+# you do need to have a gotowebinar account to run tests

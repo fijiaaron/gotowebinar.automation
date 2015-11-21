@@ -2,4 +2,12 @@ To run these tests from the command line, clone the git repository and from with
 
 mvn clean package failsafe:integration-test
 
-To configure WebDriver path and GoToWebinar logins copy test.properties.example and edit
+
+But first, you need to configure your WebDriver path and GoToWebinar login information.
+Copy test.properties.example under src/main/resources to test.properties and edit these values
+
+webdriver.chrome.driver=/path/to/chromedriver
+gotowebinar.user.email=GOTOWEBINAR_USER_EMAIL
+gotowebinar.user.password=GOTOWEBINAR_USER_PASSWORD
+
+Your tests will not run without a properly configure test.properties!

@@ -24,7 +24,11 @@ public class WebDriverTestCase {
     public static void initialize() {
         log = Logger.getLogger(getTestClassName());
         log.info("initializing tests...");
-        properties = PropertyLoader.LoadProperties(propertiesFile);
+        try {
+            properties = PropertyLoader.LoadProperties(propertiesFile);
+        } catch (Exception e) {
+            System.out.println("You probably need to configure a test.properties file.  See the example under src/main/resources");
+        }
     }
 
     @Before

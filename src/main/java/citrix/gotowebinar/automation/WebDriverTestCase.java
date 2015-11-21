@@ -26,7 +26,8 @@ public class WebDriverTestCase {
         log = Logger.getLogger(getTestClassName());
         log.info("initializing...");
 
-        properties = PropertyLoader.LoadProperties("test.properties");
+        String propertiesFile = "/test.properties";
+        properties = new PropertyLoader().loadProperties(propertiesFile);
     }
 
     @Before

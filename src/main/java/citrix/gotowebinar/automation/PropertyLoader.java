@@ -1,9 +1,6 @@
 package citrix.gotowebinar.automation;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -11,16 +8,13 @@ public class PropertyLoader {
 
     protected static Logger log = Logger.getLogger(PropertyLoader.class.getSimpleName());
 
-    public static Properties LoadProperties(String filename) {
-        Path foo = Paths.get(filename);
-        log.info("loading properties for filename: " + filename);
-
+    public Properties loadProperties(String filename) {
         Properties properties = new Properties();
         try {
-            InputStream in = PropertyLoader.class.getResourceAsStream(filename);
-            properties.load(in);
-            in.close();
+            //This depends on a filename being in the class path
+            properties.load(getClass().getResourceAsStream(filename));
         } catch (IOException e) {
+            log.warning("can't load properties file: " + filename);
             e.printStackTrace();
         }
 

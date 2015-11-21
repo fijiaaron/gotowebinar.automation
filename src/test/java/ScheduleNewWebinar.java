@@ -17,9 +17,8 @@ public class ScheduleNewWebinar extends WebDriverTestCase {
         gotowebinar_user_email = System.getProperty("gotowebinar.user.email");
         gotowebinar_user_password = System.getProperty("gotowebinar.user.password");
 
-        System.out.println("gotowebinar_user_email: " + gotowebinar_user_email);
-        System.out.println("gotowebinar_user_password: " + gotowebinar_user_password);
-
+        log.info("gotowebinar_user_email: " + gotowebinar_user_email);
+        log.info("gotowebinar_user_password: " + gotowebinar_user_password);
     }
 
     @Test

@@ -27,9 +27,12 @@ public class WebDriverTestCase {
         try {
             properties = PropertyLoader.LoadProperties(propertiesFile);
         } catch (Exception e) {
-            System.out.println("*******");
-            System.out.println("You probably need to configure a test.properties file.  See the example under src/main/resources");
-            System.out.println("*******");
+            System.out.println();
+            System.out.println("******************************************************");
+            System.out.println("You probably need to configure a test.properties file.");
+            System.out.println("See the example under src/main/resources");
+            System.out.println("******************************************************");
+            System.out.println();
         }
     }
 

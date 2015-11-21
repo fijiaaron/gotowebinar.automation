@@ -11,7 +11,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class ScheduleNewWebinar extends WebDriverTestCase {
+public class ScheduleNewWebinar_Test extends WebDriverTestCase {
 
     String gotowebinar_user_email;
     String gotowebinar_user_password;

@@ -35,6 +35,8 @@ public class MyWebinarsPage_Tests extends WebDriverTestCase {
         log.info("so let's try to login");
         loginPage.login(email, password);
 
+        // this doesn't work probably because the url is wrong
+
         log.info("and see if it redirects back");
         assertTrue(myWebinarsPage.isCurrentPage());
     }
@@ -51,6 +53,9 @@ public class MyWebinarsPage_Tests extends WebDriverTestCase {
         loginPage.navigateTo();
         loginPage.login(email, password);
 
+        assertTrue(myWebinarsPage.isCurrentPage());
+
+        myWebinarsPage.navigateTo();
         assertTrue(myWebinarsPage.isCurrentPage());
     }
 }

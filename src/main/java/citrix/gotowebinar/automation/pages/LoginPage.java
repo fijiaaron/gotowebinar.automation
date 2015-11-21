@@ -27,10 +27,10 @@ public class LoginPage extends WebDriverPage {
     }
 
     public void login(String email, String password) throws AutomationException {
-        if (! isCurrentPage()) {
-            log.info("going to login page");
-            navigateTo();
-        }
+//        if (! isCurrentPage()) {
+//            log.info("going to login page");
+//            navigateTo();
+//        }
 
         driver.findElement(emailAddressField).sendKeys(email);
         driver.findElement(passwordField).sendKeys(password);

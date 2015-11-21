@@ -21,12 +21,14 @@ public class GoToWebinarDriver {
     public LoginPage loginPage;
     public MyWebinarsPage myWebinarsPage;
     public ScheduleWebinarPage scheduleWebinarPage;
+    public ManageWebinarPage manageWebinarPage;
 
     public void initialize(WebDriver driver) {
         landingPage = new LandingPage(this.driver);
         loginPage = new LoginPage(driver);
         myWebinarsPage = new MyWebinarsPage(driver);
         scheduleWebinarPage = new ScheduleWebinarPage(driver);
+        manageWebinarPage = new ManageWebinarPage(driver);
     }
 
     public WebDriverPage<? extends WebDriverPage> navigateTo(WebDriverPage<? extends WebDriverPage> page) throws AutomationException {

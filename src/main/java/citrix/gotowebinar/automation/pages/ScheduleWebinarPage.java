@@ -15,6 +15,8 @@ public class ScheduleWebinarPage extends WebDriverPage {
     //By occursActivate = By.id("recurrenceForm_recurs_trig");
     By dateField = By.id("webinarTimesForm.dateTimes_0.baseDate");
 
+    By scheduleButton = By.id("schedule.submit.button");
+
     @Override
     public void initializeElements() {
         url = "https://global.gotowebinar.com/schedule.tmpl";
@@ -33,5 +35,9 @@ public class ScheduleWebinarPage extends WebDriverPage {
         driver.findElement(dateField).click();
         driver.findElement(dateField).clear();
         driver.findElement(dateField).sendKeys(date);
+    }
+
+    public void save() {
+        driver.findElement(scheduleButton).click();
     }
 }
